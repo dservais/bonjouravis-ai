@@ -1,0 +1,185 @@
+{
+  "name": "BonjourAvis.ai",
+  "url": "https://bonjouravis.ai",
+  "description": "Google Business Profile review management for local businesses: AI drafts a reply to each Google review, in the language of the review; the business validates it or turns on automatic replies.",
+  "publisher": {
+    "name": "NEXUS TECH",
+    "legalForm": "SASU",
+    "country": "FR",
+    "legalNotice": "https://bonjouravis.ai/mentions-legales"
+  },
+  "whenToUse": [
+    "Replying to the Google reviews of a local business (restaurant, hotel, campsite, hair salon, medical or veterinary practice, gym, real estate agency, tradesperson, franchise network).",
+    "Replying to each review in the language it was written in, e.g. for a tourist or international clientele (100+ languages).",
+    "Automatically replying to new Google reviews according to their star rating, in the business's own tone and signature.",
+    "Clearing a backlog of unanswered Google reviews in one batch.",
+    "Managing the reviews of several locations or a franchise network, including access delegated through Google (Manager role).",
+    "Getting a free email alert for every 1-star Google review."
+  ],
+  "notFor": [
+    "reviews on other platforms than Google (TripAdvisor, Booking, Trustpilot...)",
+    "buying or soliciting reviews",
+    "removing a genuine review"
+  ],
+  "capabilities": [
+    "AI reply drafted for each Google review, in the language of the review (100+ languages, automatic detection)",
+    "Checks before publishing: no truncated text, no invented contact details, consistent language",
+    "Configurable tone: personas, signature, standing instructions",
+    "Automatic replies to new reviews, by star rating and delay",
+    "Batch processing of unanswered reviews",
+    "Free email alerts on 1-star reviews",
+    "AI analysis of reviews (recurring themes, strengths, pain points)",
+    "Multiple locations and Google Manager delegation"
+  ],
+  "humanOnboarding": {
+    "url": "https://bonjouravis.ai/login",
+    "steps": "Sign in with the Google account that manages the Business Profile and grant access to its locations.",
+    "freeTier": "15 free replies, no credit card"
+  },
+  "api": {
+    "baseUrl": "https://bonjouravis.ai/api/v1",
+    "format": "application/json",
+    "responseEnvelope": {
+      "success": "{ \"data\": ... }",
+      "error": "{ \"error\": \"<CODE>\", \"message\": \"...\" }"
+    },
+    "authentication": {
+      "type": "http",
+      "scheme": "bearer",
+      "header": "Authorization: Bearer <API key>",
+      "keyPrefix": "ba_live_",
+      "obtain": "Create the key in the dashboard (Integrations) once support has enabled API access for the account. Keys carry permissions, an optional expiry and an optional IP allowlist."
+    },
+    "scope": "Only the locations connected by their owner or a delegated manager; no public access to a third party's reviews.",
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/api/v1/locations",
+        "permission": "locations:read",
+        "credits": 0,
+        "description": "Locations of the account"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/locations/{id}/reviews",
+        "permission": "reviews:read",
+        "credits": 0,
+        "description": "Reviews of a location"
+      },
+      {
+        "method": "GET",
+        "path": "/api/v1/locations/{id}/stats",
+        "permission": "stats:read",
+        "credits": 0,
+        "description": "Statistics of a location"
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/reviews/{id}/generate",
+        "permission": "responses:generate",
+        "credits": 1,
+        "description": "Draft an AI reply",
+        "body": "{\"instructions\": \"...\"}",
+        "bodyOptional": true
+      },
+      {
+        "method": "POST",
+        "path": "/api/v1/reviews/{id}/publish",
+        "permission": "responses:publish",
+        "credits": 0,
+        "description": "Publish the generated reply on Google, or your own text",
+        "body": "{\"response\": \"...\"}",
+        "bodyOptional": true
+      }
+    ],
+    "rateLimits": {
+      "readsPerMinute": 60,
+      "writesPerMinute": 10,
+      "generationsPerHour": 20
+    },
+    "errors": [
+      {
+        "status": 401,
+        "codes": [
+          "UNAUTHORIZED",
+          "EXPIRED"
+        ]
+      },
+      {
+        "status": 402,
+        "codes": [
+          "INSUFFICIENT_CREDITS"
+        ]
+      },
+      {
+        "status": 403,
+        "codes": [
+          "API_ACCESS_DISABLED",
+          "INSUFFICIENT_PERMISSIONS",
+          "IP_NOT_ALLOWED",
+          "SUSPENDED",
+          "FORBIDDEN"
+        ]
+      },
+      {
+        "status": 404,
+        "codes": [
+          "NOT_FOUND"
+        ]
+      },
+      {
+        "status": 429,
+        "codes": [
+          "RATE_LIMITED",
+          "DAILY_QUOTA_EXCEEDED"
+        ]
+      },
+      {
+        "status": 503,
+        "codes": [
+          "API_DISABLED"
+        ]
+      }
+    ]
+  },
+  "pricing": {
+    "currency": "EUR",
+    "unit": "per location per month, no commitment",
+    "plans": [
+      {
+        "name": "Découverte",
+        "price": 0,
+        "includes": "15 free replies, no credit card"
+      },
+      {
+        "name": "Essentiel",
+        "price": 5,
+        "includes": "10 replies per month, unused credits carried over"
+      },
+      {
+        "name": "Business",
+        "price": 19,
+        "includes": "Unlimited replies, automatic replies, batch processing, AI analysis"
+      }
+    ],
+    "trial": "14-day Business trial at first sign-in; not unlimited, each reply uses an offered credit",
+    "details": "https://bonjouravis.ai/pricing"
+  },
+  "resources": {
+    "llmsTxt": "https://bonjouravis.ai/llms.txt",
+    "llmsFullTxt": "https://bonjouravis.ai/llms-full.txt",
+    "markdownHomepage": {
+      "url": "https://bonjouravis.ai",
+      "header": "Accept: text/markdown"
+    },
+    "sitemap": "https://bonjouravis.ai/sitemap.xml",
+    "privacy": "https://bonjouravis.ai/privacy",
+    "terms": "https://bonjouravis.ai/cgv",
+    "aiTransparency": "https://bonjouravis.ai/transparence-ia"
+  },
+  "contact": {
+    "email": "contact@bonjouravis.ai",
+    "support": "Written support only, from the dashboard",
+    "linkedin": "https://www.linkedin.com/company/bonjouravis"
+  }
+}

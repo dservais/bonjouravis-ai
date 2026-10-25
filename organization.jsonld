@@ -1,0 +1,127 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://bonjouravis.ai/#organization",
+      "name": "BonjourAvis",
+      "legalName": "NEXUS TECH",
+      "description": "Éditeur français de BonjourAvis.ai, outil de gestion des avis Google Business Profile pour les commerces et établissements locaux : l'IA rédige une réponse à chaque avis, dans la langue de l'avis.",
+      "url": "https://bonjouravis.ai",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://bonjouravis.ai/logo.png",
+        "width": 500,
+        "height": 142
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "239 Chemin du puits de Calixte",
+        "addressLocality": "Valflaunès",
+        "postalCode": "34270",
+        "addressCountry": "FR"
+      },
+      "email": "contact@bonjouravis.ai",
+      "sameAs": [
+        "https://www.linkedin.com/company/bonjouravis",
+        "https://github.com/dservais/bonjouravis-ai"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "contact@bonjouravis.ai",
+        "availableLanguage": [
+          "French",
+          "English",
+          "Spanish",
+          "German",
+          "Italian",
+          "Portuguese",
+          "Dutch",
+          "Japanese"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://bonjouravis.ai/#website",
+      "url": "https://bonjouravis.ai",
+      "name": "BonjourAvis",
+      "description": "Plateforme IA de gestion d'e-réputation pour commerces locaux",
+      "publisher": {
+        "@id": "https://bonjouravis.ai/#organization"
+      },
+      "inLanguage": "fr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://bonjouravis.ai/#software",
+      "name": "BonjourAvis",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "EUR",
+        "lowPrice": "0",
+        "highPrice": "19",
+        "offerCount": 3,
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Découverte",
+            "description": "15 réponses offertes, accès complet au tableau de bord, alertes email sur les avis 1 étoile, toutes les langues. Sans carte bancaire.",
+            "price": "0",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
+            "url": "https://bonjouravis.ai/pricing"
+          },
+          {
+            "@type": "Offer",
+            "name": "Essentiel",
+            "description": "10 réponses par mois, crédits non utilisés conservés, tous les personas, multi-établissements, support.",
+            "price": "5",
+            "priceCurrency": "EUR",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "5",
+              "priceCurrency": "EUR",
+              "billingDuration": "P1M",
+              "unitText": "par mois et par établissement"
+            },
+            "availability": "https://schema.org/InStock",
+            "url": "https://bonjouravis.ai/pricing"
+          },
+          {
+            "@type": "Offer",
+            "name": "Business",
+            "description": "Réponses illimitées, réponse automatique, traitement par lot, analyse IA, tous les personas, multi-établissements, support.",
+            "price": "19",
+            "priceCurrency": "EUR",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "19",
+              "priceCurrency": "EUR",
+              "billingDuration": "P1M",
+              "unitText": "par mois et par établissement"
+            },
+            "availability": "https://schema.org/InStock",
+            "url": "https://bonjouravis.ai/pricing"
+          }
+        ]
+      },
+      "author": {
+        "@id": "https://bonjouravis.ai/#organization"
+      },
+      "description": "Répondez automatiquement à vos avis Google grâce à l'intelligence artificielle. Réponse générée en quelques secondes depuis le tableau de bord. Analyse de sentiments, personas personnalisés, support de 100+ langues.",
+      "featureList": [
+        "Réponses IA personnalisées aux avis Google en quelques secondes depuis votre tableau de bord",
+        "Analyse de sentiments et thématiques par IA",
+        "Personas IA configurables avec ton unique de votre commerce",
+        "Support de 100+ langues avec détection automatique",
+        "Publication directe sur Google Business Profile en un clic",
+        "Processus guidé en 5 étapes pour suppression d'avis abusifs",
+        "Données hébergées en France — vos données restent votre propriété"
+      ]
+    }
+  ]
+}
